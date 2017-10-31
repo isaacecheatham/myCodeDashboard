@@ -37,7 +37,7 @@ $(document).ready(function() {
 
         $("#deleteForm").attr("action", id);
 
-        document.getElementById('itemToDelete').innerHTML = "<i class='trash outline icon'></i> Delete the <span class='toDelete'>" + text + "</span> menu?";
+        document.getElementById('itemToDelete').innerHTML = "<i class='trash outline icon'></i> Delete the <span class='toDelete'>" + text + "</span> menu and all of its links?";
 
         console.log(text);
 
