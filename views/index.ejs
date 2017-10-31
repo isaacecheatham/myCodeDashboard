@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Site Properities -->
+    <title>MyDashboard</title>
+
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    
+    <!--<meta name="generator" content="DocPad v6.79.4">-->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+
+    <!-- <script type="text/javascript" src="https://cdn.transifex.com/9ede3015b9f84c1aabc81ab839c55d74/latest/manifest.jsonp"></script> -->
+
+</head>
+
+<body id="example" class="index pushable" ontouchstart="">
+
+<!--HIDDEN SIDEBAR-->
+    <div class="ui vertical inverted sidebar menu left" id="toc" style="">
+
+        <div class="item">
+            <a href="#"> <i class=""></i><b>< / > MyCodeDashboard</b></a>
+        </div>
+        <!--<a class="item" href="#">-->
+        <!--    <b>Big Link</b>-->
+        <!--</a>-->
+        
+        <div class="item">
+            <div class=" header">LINKS</div>
+            <div class="menu">
+
+                <div class="ui inverted segment">
+                    <div class="ui inverted accordion">
+
+                        <% titles.forEach(function(titles){ %>
+                            <div class="title">
+                                <i class="dropdown icon"></i>
+                                <%= titles.title %>
+                            </div>
+                            <div class="content">
+                                <% links.forEach(function(links){ %>
+                                    <% if( titles.title == links.title ) { %>
+                                        <div class='opened item'>
+                                            <i class='right floated icon'><a class="linkEdit" href='/' id="<%= links._id %>"><i class='setting right floated icon'></i></a>
+                                            </i>
+                                            <!--<i class='right floated icon'><a class="linkTrash" href="/" id="<%= links._id %>"><i class='trash right floated icon'></i></a>-->
+                                            <!--</i>-->
+                                            <a class="link main_menu" target='_blank' href='<%= links.url %>'>
+                                                <%= links.name %>
+                                            </a>
+                                        </div>
+
+                                        <% }%>
+                                            <% }); %>
+                                                
+                                                <!--<a class='newLinkDiv main_menu opened item' href='/'>-->
+                                                <!--    <i class='plus icon'></i>-->
+                                                <!--    Add New Link-->
+                                                <!--</a>-->
+                                                
+                                                <!--<a class='editMenuDiv main_menu opened item' href='/' id="<%= titles._id %>">-->
+                                                <!--  <i class='setting icon'></i>-->
+                                                <!--   Edit Menu-->
+                                                <!--</a>-->
+                                                
+                                                <!--<a class='deleteMenuDiv main_menu opened item' href='/' id="<%= titles._id %>">-->
+                                                <!--    <i class='trash icon'></i>-->
+                                                <!--    Delete Menu-->
+                                                <!--</a>-->
+                                                
+                                                <div class="main_menu opened item">
+                                                    <!--<div class="ui center aligned grid">-->
+                                                    <a class="newLinkDiv ui inverted green icon button menuButtons activating element" id="<%= titles._id %>" data-content="New Link"><i class='plus icon'></i></a>
+                                                    <a class="editMenuDiv ui inverted orange icon button menuButtons activating element" id="<%= titles._id %>" data-content="Edit Menu"><i class='settings icon'></i></a>
+                                                    <!--</div>-->
+                                                </div>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+                <a class="item newMenu" href="/">
+                    <i class='plus icon'></i> Add New Menu
+                </a>
+            </div>
+        </div>
+    </div> 
+<!--END OF HIDDEN SIDEBAR-->
+
+<!--?????-->
+    <!--<div class="ui black big launch right attached fixed button">-->
+    <!--    <i class="content icon"></i>-->
+    <!--    <span class="text">Men</span>-->
+    <!--</div>-->
+<!--?????-->
+
+<!--MOBILE HEADER-->
+    <div class="ui fixed inverted main menu">
+        <div class="ui container">
+            <a class="launch icon item">
+                <i class="content icon"></i>
+            </a>
+            <div class="right menu">
+                 <div class="vertically fitted borderless item">
+                            <a class="item signInButton">
+                                <i class="user icon"></i> Log In
+                            </a>
+                 </div>
+            </div>
+        </div>
+    </div>
+<!--END MOBILE HEADER-->
+
+
+<!--PUSHER-->
+    <div class="pusher">
+        
+<!--FULL HEIGHT-->
+        <div class="full height">
+            
+<!--MAIN HEADER UNTIL MOBILE-->
+            <div class="following bar">
+                <div class="ui container">
+                    <div class="ui large inverted secondary network menu">
+                        <div class="item">
+                            <div class="ui logo shape">
+                                <div class="sides">
+                                    <div class="active ui side">
+                                        <!--<img class="ui image" src="/images/logo.png">-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="view-ui item">
+                            <i class="sidebar icon"></i> Menu
+                        </a>
+                        <div class="right menu">
+                            <a class="item signInButton">
+                                <i class="user icon"></i> Log In
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--END MAIN HEADER-->
+
+            
+<!--MAIN AREA CURRENTLY BLUE-->
+            <div class="masthead segment bg6">
+                <div class="ui container">
+                    <div class="introduction">
+                        <h1 class="ui inverted header">
+                            <span class="library">
+                              MyCodeDashboard
+                            </span>
+                            <span class="tagline">
+                              More Content Coming Soon...
+                            </span>
+                          </h1>
+                        <div class="ui hidden divider"></div>
+
+                        <a href="#l" class="ui huge inverted download button">
+                            Button 1
+                        </a>
+                        <a href="#" class="ui huge inverted basic button">Button 2</a>
+                    </div>
+                    <div class="inverted advertisement">
+
+                    </div>
+                </div>
+            </div>
+<!--END OF MAIN AREA-->
+   </div>         
+            
+        <!--    <div class="ui vertical stripe intro segment">-->
+        <!--        <div class="ui stackable very relaxed center aligned grid container">-->
+        <!--            <div class="row">-->
+        <!--                <div class="twelve wide column">-->
+
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="stackable very relaxed ui grid container">-->
+        <!--            <div class="row">-->
+        <!--                <div class="seven wide column">-->
+
+        <!--                </div>-->
+        <!--                <div class="nine wide column">-->
+
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="ui divider"></div>-->
+        <!--            <div class="row">-->
+        <!--                <div class="seven wide column">-->
+
+        <!--                </div>-->
+        <!--                <div class="nine wide column">-->
+
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="ui divider"></div>-->
+        <!--            <div class="row">-->
+        <!--                <div class="seven wide column">-->
+
+        <!--                </div>-->
+        <!--                <div class="nine wide column">-->
+
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--    <div class="ui email alternate stripe vertical segment">-->
+        <!--        <div class="ui center aligned grid container">-->
+        <!--            <div class="column">-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+
+        <!--    <div class="ui stripe theming vertical segment">-->
+        <!--        <div class="ui stackable very relaxed two column grid container">-->
+        <!--            <div class="center aligned column">-->
+
+        <!--            </div>-->
+
+        <!--            <div class="left aligned column">-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="ui two column center aligned relaxed stackable source grid">-->
+        <!--            <div class="column">-->
+
+        <!--            </div>-->
+        <!--            <div class="column">-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--    <div class="feature alternate ui stripe vertical segment">-->
+        <!--        <div class="ui three column center aligned divided relaxed stackable grid container">-->
+        <!--            <div class="row">-->
+        <!--                <div class="column">-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--    <div class="ui stripe vertical segment">-->
+
+        <!--    </div>-->
+        <!--</div>-->
+<!--END FULL HEIGHT-->
+
+
+<!--FOOTER AREA-->
+        <!--<div class="ui black inverted vertical footer segment">-->
+        <!--    <div class="ui center aligned container">-->
+        <!--        <div class="ui stackable inverted grid">-->
+        <!--            <div class="three wide column">-->
+
+        <!--                <div class="ui inverted link list">-->
+
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="three wide column">-->
+
+        <!--                <div class="ui inverted link list">-->
+
+        <!--                </div>-->
+        <!--            </div>-->
+                    
+        <!--            <div class="seven wide right floated column">-->
+        <!--                <form action="#" method="post" target="_top">-->
+        <!--                    <button type="submit" class="ui large teal button">Button</button>-->
+        <!--                </form>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="ui inverted section divider"></div>-->
+                <!--<img src="/images/logo.png" class="ui centered mini image">-->
+        <!--        <div class="ui horizontal inverted small divided link list">-->
+        <!--            <a class="item" href="#" target="_blank">Button</a>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+<!--END FOOTER-->
+
+
+    </div>
+<!--END PUSHER-->
+
+    <!--HIDDEN MODALS-->
+    <% include ./partials/indexModals %>
+    
+    
+    
+    <!--SCRIPTS-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="/js/highlight.min.js"></script>
+    <script src="/js/easing.min.js"></script>
+    <script src="/js/docs.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="/js/modalJS.js"></script>
+    
+    <script>
+        $('.ui.accordion')
+            .accordion();
+    </script>
+
+
+    <script>
+        window.less = {
+            async: true,
+            environment: 'production',
+            fileAsync: false,
+            onReady: false,
+            useFileCache: true
+        };
+        
+        
+        $('.activating.element')
+          .popup({
+              position: "bottom right"
+          })
+        ;
+    </script>
+    
+    <script src="/js/less.min.js"></script>
+
+</body>
+
+</html>

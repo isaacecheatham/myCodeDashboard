@@ -1,0 +1,31 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header">Add New</div>
+    <form class="ui form" action="/dashboard/new_link" method="POST">
+        <div class="field">
+            <label>Parent Title</label>
+            
+            
+        <select name="link[title]">
+        <option value="">Select Parent Menu</option>
+        <% menus.forEach(function(menus){ %>
+          <option value="<%= menus.title %>"><%= menus.title %></option>
+        <% }); %>
+        </select> 
+        </div>
+  
+       <div class="field">
+            <label>Link Title</label>
+            <input type="text" name="link[name]">
+        </div>
+        
+        <div class="field">
+            <label>URL</label>
+            <input type="text" name="link[url]">
+        </div>
+
+        <input class="ui green big basic button" type="submit" value="SUBMIT">
+        <a class="ui blue big basic button" href="/dashboard">Go Back</a>
+    </form>
+</div>
+<% include ./partials/footer %>

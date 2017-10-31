@@ -1,0 +1,207 @@
+<!--LOGIN FORM MODAL-->
+
+<div class="ui tiny modal" id="login_modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Login
+    </div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="first-name" placeholder="Username">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="text" name="last-name" placeholder="Password">
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                    Go Back
+                </div>
+                <button type="submit" class="ui positive right labeled icon button">
+                    Log me in!
+                    <i class="checkmark icon"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--DELETE FORM MODAL-->
+
+<div class="ui basic modal" id="delete_modal">
+    <div id="itemToDelete" class="ui icon header">
+    </div>
+    <form id="deleteForm" action="" method="POST">
+        <div class="actions ui center aligned grid">
+            <div id="deleteNo" class="ui red basic cancel inverted button">
+                <i class="remove icon"></i> No
+            </div>
+            <button type="submit" class="ui basic green ok inverted button">
+                <i class="checkmark icon"></i> Yes
+            </button>
+        </div>
+    </form>
+</div>
+
+
+<!--NEW MENU FORM MODAL-->
+
+<div class="ui tiny modal" id="new_menu_modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Create a Menu
+    </div>
+    <div class="content">
+        <form class="ui form" action="/dashboard/new_menu" method="POST">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="menu[title]">
+            </div>
+
+            <div class="actions">
+                <div class="ui black deny button">
+                    Go Back
+                </div>
+                <button type="submit" class="ui positive right labeled icon button">
+                    Submit
+                    <i class="checkmark icon"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--NEW LINK FORM MODAL-->
+
+<div class="ui tiny modal" id="new_link_modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Create a Link
+    </div>
+    <div class="content">
+        <form class="ui form" action="/dashboard/new_link" method="POST">
+            <div class="field">
+                <label>Parent Title</label>
+
+                <select id="linkParentDropDown" name="link[title]">
+                    <option value="">Select Parent Menu</option>
+                    <% titles.forEach(function(titles){ %>
+                        <option value="<%= titles.title %>">
+                            <%= titles.title %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Link Title</label>
+                <input type="text" name="link[name]">
+            </div>
+
+            <div class="field">
+                <label>URL</label>
+                <div class="inline field">
+                    <label>https://www.</label>
+                <input type="text" name="link[url]">
+                
+<!--<div class="input-box">-->
+<!--  <input value="" autofocus="autofocus"/>-->
+<!--  <span class="unit">£</span>-->
+<!--</div>-->
+            </div>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                    Go Back
+                </div>
+                <button type="submit" class="ui positive right labeled icon button">
+                    Submit
+                    <i class="checkmark icon"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--EDIT MENU FORM MODAL-->
+
+<div class="ui tiny modal" id="edit_menu_modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Edit Menu
+    </div>
+    <div class="content">
+        <form id="edit_menu_form" class="ui form" action="" method="POST">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" id="editMenuInput" name="title[title]" value="">
+            </div>
+
+            <div class="actions">
+                <div class="ui black deny button">
+                    Go Back
+                </div>
+                <div class="deleteMenuDiv ui red deny button" id="">
+                    Delete Menu
+                </div>
+                <button type="submit" class="ui positive right labeled icon button">
+                    Submit
+                    <i class="checkmark icon"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!--EDIT LINK FORM MODAL-->
+
+<div class="ui tiny modal" id="edit_link_modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Edit Link
+    </div>
+    <div class="content">
+        <form id="edit_link_form" class="ui form" action="" method="POST">
+            <div class="field">
+                <label>Parent Title</label>
+                <select id="editLinkMenusDropDown" name="link[title]">
+                    <option value="">Select Parent Menu</option>
+                    <% titles.forEach(function(titles){ %>
+                        <option value="<%= titles.title %>">
+                            <%= titles.title %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Link Title</label>
+                <input id="editLinkName" type="text" name="link[name]" value="">
+            </div>
+
+            <div class="field">
+                <label>URL</label>
+                <input id="editLinkURL" type="text" name="link[url]" value="">
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                    Go Back
+                </div>
+                <div class="linkTrash ui red deny button">
+                    Delete Link
+                </div>
+                <button type="submit" class="ui positive right labeled icon button">
+                    Submit
+                    <i class="checkmark icon"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

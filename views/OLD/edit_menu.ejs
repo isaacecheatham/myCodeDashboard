@@ -1,0 +1,13 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= title.title %></div>
+    <form class="ui form" action="/dashboard/<%= title._id %>/edit_menu?_method=PUT" method="POST">
+        <div class="field">
+            <label>Parent Title</label>
+            <input type="text" name="title[title]" value="<%= title.title %>">
+        </div>
+       
+        <input class="ui blue big basic button" type="submit" value="SUBMIT">
+    </form>
+</div>
+<% include ./partials/footer %>

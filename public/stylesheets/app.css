@@ -1,0 +1,97 @@
+/*body {*/
+/*    margin-top: 50px;*/
+/*    background: #606060;*/
+/*}*/
+
+/*span.icons {*/
+/*    margin-left: 20px;*/
+/*    padding: 0;*/
+/*}*/
+
+/*span.toDelete {*/
+/*    color: red;*/
+/*}*/
+
+
+/*.deleteForm {*/
+/*    margin: 20px;*/
+/*}*/
+
+/*.opened.item {*/
+/*    width: 300px;*/
+/*}*/
+
+/*.attention {*/
+/*    display: inline-block;*/
+/*}*/
+
+/*a.main_menu {*/
+/*    width: 100% !important;*/
+/*    display: block;*/
+/*}*/
+
+/*a.linkTrash {*/
+/*    color: rgba(182, 0, 0, 0.5);*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*a.linkTrash:hover {*/
+/*    color: rgba(182, 0, 0, 1);*/
+/*}*/
+
+/*a.linkEdit  {*/
+/*    color: rgba(0, 205, 0, 0.5);*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*a.linkEdit:hover  {*/
+/*    color: rgba(0, 205, 0, 1);*/
+/*}*/
+
+
+.ui.modal .actions>.button {
+    margin-left: .75em;
+    margin-right: .75em;
+    margin-top: .75em;
+}
+
+
+@media only screen and (max-width: 767px){
+.ui.modal>.header {
+    padding: .75rem 1rem!important;
+    /* padding-right: 2.25rem!important; */
+}
+}
+
+.toDelete {
+    color: orange;
+}
+
+.ui.vertical.inverted.menu .item .menu .link.main_menu:hover, .ui.vertical.inverted.menu .item .menu a.link:hover
+{
+    background: 0 0;
+    color: #fff;
+}
+
+
+.ui.vertical.inverted.menu .item .menu .trash:hover {
+    color: #ff695e;
+}
+
+.ui.vertical.inverted.menu .item .menu .edit:hover {
+    color: gold;
+}
+
+.ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
+    margin: 0;
+}
+
+.ui.button.menuButtons {
+    width: 47%;
+    padding: .25em 0;
+}
+
+
+.ui.form .inline.field > input, .ui.form .inline.field > select, .ui.form .inline.fields .field > input, .ui.form .inline.fields .field > select {
+    width: 75%;
+}

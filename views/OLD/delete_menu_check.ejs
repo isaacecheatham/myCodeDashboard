@@ -1,0 +1,11 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+    <div class="ui centered huge header">Delete the following menu and its contents?<br><span class="toDelete"><%= menu.title %></span></div>
+    <div class="ui center aligned grid ">
+        <form class="ui form deleteForm" action="/dashboard/<%= menu._id %>/deleteMenu?_method=DELETE" method="POST">
+            <Button class="ui red big basic button">Delete</button>
+            <a class="ui blue big basic button" href="/dashboard">Go Back</a>
+        </form>
+    </div>
+</div>
+<% include ./partials/footer %>
