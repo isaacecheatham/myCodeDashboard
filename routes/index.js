@@ -16,12 +16,12 @@ router.get("/", function(req, res){
 
 //INDEX ROUTE
 router.get("/dashboard", function(req, res){
-    Menu.find().sort('title').exec(function(err, titles){
+    Menu.find().sort('title').exec(function(err, titles){ //Find all menus to display
         if(err){
             console.error(err);
             console.log(err);
         } else {
-            Link.find().sort('name').exec(function(err, links){
+            Link.find().sort('name').exec(function(err, links){  //Find all links to display under each menu
                 if(err) {
                     console.log(err);
                 } else {
@@ -36,7 +36,7 @@ router.get("/dashboard", function(req, res){
 //CREATE MENU ROUTE
 router.post("/dashboard/new_menu", function(req, res) {
     // create blog
-    Menu.create(req.body.menu, function(err, newMenu){
+    Menu.create(req.body.menu, function(err, newMenu){  //Add new menu to db
         if(err) {
             console.error(err);
             res.render("new_menu");
@@ -49,9 +49,9 @@ router.post("/dashboard/new_menu", function(req, res) {
 
 
 //CREATE LINK ROUTE
-router.post("/dashboard/new_link", function(req, res) {
+router.post("/dashboard/new_link", function(req, res) {  
     // create blog
-    Link.create(req.body.link, function(err, newLink){
+    Link.create(req.body.link, function(err, newLink){  //Add a new link to a menu in db
         if(err) {
             console.error(err);
             res.render("new_link");
@@ -66,7 +66,7 @@ router.post("/dashboard/new_link", function(req, res) {
 
 //UPDATE LINK ROUTE
 router.put("/dashboard/:id", function(req, res){
-    Link.findByIdAndUpdate(req.params.id, req.body.link, function(err, updatedLink){
+    Link.findByIdAndUpdate(req.params.id, req.body.link, function(err, updatedLink){  //Find a link and update
       if(err){
           console.error(err);
           res.redirect("/dashboard");
@@ -78,17 +78,17 @@ router.put("/dashboard/:id", function(req, res){
 
 
 //UPDATE MENU ROUTE
-router.put("/dashboard/:id/edit_menu", function(req, res){
+router.put("/dashboard/:id/edit_menu", function(req, res){  
     
-    Menu.findById(req.params.id, function(err, found){
+    Menu.findById(req.params.id, function(err, found){  //Find the menu
         if(err) {
             console.log(err);
         } else {
-    Menu.findByIdAndUpdate(req.params.id, req.body.title, function(err, updatedTitle){
+    Menu.findByIdAndUpdate(req.params.id, req.body.title, function(err, updatedTitle){   //Update the menu
       if(err){
           res.redirect("/dashboard");
       }  else {
-          Link.update({title: found.title}, req.body.title, {"multi": true}, function(err, updatedLinkTitle){
+          Link.update({title: found.title}, req.body.title, {"multi": true}, function(err, updatedLinkTitle){   //Update the link so it follows the new menu name
               if(err){
                   res.redirect("/dashboard");
                   console.log(err);
@@ -107,13 +107,13 @@ router.put("/dashboard/:id/edit_menu", function(req, res){
 
 //DELETE MENU ROUTE
 router.delete("/dashboard/:id/deleteMenu", function(req, res){
-    Menu.findById(req.params.id, function(err, found){
+    Menu.findById(req.params.id, function(err, found){    //Find the menu
         if(err) {
             console.log(err);
         } else {
    
-    Menu.findByIdAndRemove(req.params.id, function(err){
-        if(err){
+    Menu.findByIdAndRemove(req.params.id, function(err){   //If found then delete the menu
+        if(err){ 
             res.redirect("/dashboard");
         } else {
             Link.deleteMany({title: found.title}, function(err){
@@ -134,7 +134,7 @@ router.delete("/dashboard/:id/deleteMenu", function(req, res){
 //DELETE LINK ROUTE
 router.delete("/dashboard/:id/deleteLink", function(req, res){
     //DESTROY
-    Link.findByIdAndRemove(req.params.id, function(err){
+    Link.findByIdAndRemove(req.params.id, function(err){    //Find the link and delete
         if(err){
             res.redirect("/dashboard");
         } else {
@@ -144,4 +144,4 @@ router.delete("/dashboard/:id/deleteLink", function(req, res){
 });
 
 
-module.exports = router;
+module.exports = router;  //Export to use in app.js

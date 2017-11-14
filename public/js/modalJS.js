@@ -39,11 +39,9 @@ $(document).ready(function() {
 
         document.getElementById('itemToDelete').innerHTML = "<i class='trash outline icon'></i> Delete the <span class='toDelete'>" + text + "</span> menu and all of its links?";
 
-        console.log(text);
-
         e.preventDefault();
     });
-
+ 
     //DELETE LINK SCRIPT
     $(".linkTrash").click(function(e) {
 
@@ -56,8 +54,6 @@ $(document).ready(function() {
         $("#deleteForm").attr("action", id);
 
         document.getElementById('itemToDelete').innerHTML = "<i class='trash outline icon'></i> Delete the <span class='toDelete'>" + text + "</span> link?";
-
-        console.log(id);
 
         e.preventDefault();
     });
@@ -80,9 +76,7 @@ $(document).ready(function() {
         $(".deleteMenuDiv").attr("id", $(this).attr('id'));
         
         $(".deleteMenuDiv").attr("value", $("#editMenuInput").attr('value'));
-    
-            console.log(id);
-    
+
             e.preventDefault();
     });
 
@@ -124,12 +118,12 @@ $(document).ready(function() {
 });
 
 
-$("#input").keydown(function(e) {
-    var oldvalue=$(this).val();
-    var field=this;
-    setTimeout(function () {
-        if(field.value.indexOf('http://') !== 0) {
-            $(field).val(oldvalue);
-        } 
-    }, 1);
-});
+// $("#input").keydown(function(e) {
+//     var oldvalue=$(this).val();
+//     var field=this;
+//     setTimeout(function () {
+//         if(field.value.indexOf('http://') !== 0) {
+//             $(field).val(oldvalue);
+//         } 
+//     }, 1);
+// });
