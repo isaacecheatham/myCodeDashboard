@@ -31,6 +31,6 @@ app.use('/', routes);
 //     console.log("DASHBOARD SERVER IS RUNNING");
 // });
 
-app.listen(3030, function() {
+app.listen(3030, 'localhost',  function() {
   console.log('Dashboard Server is Running');
 });
