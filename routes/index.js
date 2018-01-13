@@ -1,63 +1,128 @@
-const   express = require('express'),
-        router  = express.Router(),
-        Link    = require('../models/link'),
-        Menu    = require('../models/menu');
+var express = require("express");
+var router = express.Router();
+var passport = require("passport");
+var User = require("../models/user")
+var middleware = require("../middleware");
+var Link    = require('../models/link');
+var Menu    = require('../models/menu');
 
 
-//RESTFUL ROUTES
-
-
-//Redirect from root to Dashboard
+//ROOT ROUTE
 router.get("/", function(req, res){
-    res.redirect("/dashboard");
+     res.redirect("/dashboard");
 });
-
 
 
 //INDEX ROUTE
-router.get("/dashboard", function(req, res){
-    Menu.find().sort('title').exec(function(err, titles){ //Find all menus to display
+router.get("/dashboard", middleware.isLoggedIn, function(req, res){
+    Menu.find({"owner.id":req.user._id}).sort('name').populate("links").exec(function(err, menunames){ //Find all menus to display
         if(err){
-            console.error(err);
-            console.log(err);
+            req.flash("error", "Something went wrong");
         } else {
-            Link.find().sort('name').exec(function(err, links){  //Find all links to display under each menu
-                if(err) {
-                    console.log(err);
-                } else {
-                    res.render("index", {titles: titles, links: links});
-                }
-            });
+          res.render("index", {menus: menunames});
         }
     });
 });
+
+
+
+//==========AUTH ROUTES==============
+
+router.post("/register", (req, res) => {
+    
+    var newUser = User({username: req.body.username});
+    
+    User.register(newUser, req.body.password, (err, user) => {
+        if(err){
+            req.flash("error", err.message);
+            return res.redirect('/login');
+        }
+        
+        passport.authenticate("local")(req, res, () => {
+            req.flash("success", "Welcome " + user.username);
+            res.redirect("/dashboard");
+        });
+    });
+});
+
+//LOGIN ROUTES
+router.get("/login", (req, res) => {
+    res.render("login");
+});
+
+router.post("/login", passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true
+}) ,(req, res) => {
+    
+});
+
+
+//LOGOUT ROUTE
+router.get("/logout", (req, res) => {
+    req.logout();
+    req.flash("success", "Logged out successfully");
+    res.redirect("/login");
+});
+
+
+
+//======================MENU ROUTES=======================
 
 
 //CREATE MENU ROUTE
-router.post("/dashboard/new_menu", function(req, res) {
-    // create blog
-    Menu.create(req.body.menu, function(err, newMenu){  //Add new menu to db
+router.post("/dashboard/new_menu",middleware.isLoggedIn, function(req, res) {
+
+    var name = req.body.name;
+    var owner = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    var newMenu = {name: name, owner:owner};
+    // create menu
+    Menu.create(newMenu, function(err, newMenu){  //Add new menu to db
         if(err) {
-            console.error(err);
-            res.render("new_menu");
+            req.flash("error", "Something went wrong, try again");
+            res.redirect("/dashboard");
         } else {
              //redirect to index
+            req.flash("success", "Menu created");
             res.redirect("/dashboard");
         }
     });
 });
 
 
-//CREATE LINK ROUTE
-router.post("/dashboard/new_link", function(req, res) {  
-    // create blog
-    Link.create(req.body.link, function(err, newLink){  //Add a new link to a menu in db
+//CREATE LINK ROUTE 
+router.post("/dashboard/:id/new_link", middleware.isLoggedIn, function(req, res) {  
+    var id = req.params.id;
+    var name = req.body.linkname;
+    var url = req.body.url;
+    var owner = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    
+    var newLink = {name:name, url:url, parentmenuid:id, owner:owner};
+    
+    
+      Menu.findOne({"_id":id}).exec(function(err, menu){
         if(err) {
-            console.error(err);
-            res.render("new_link");
+            req.flash("error", "Something went wrong, try again");
+            res.redirect("back");
         } else {
-             //redirect to index
-            res.redirect("/dashboard");
+            Link.create(newLink, function(err, createdLink){  //Add a new link to a menu in db
+            if(err) {
+                req.flash("error", "Something went wrong, try again");
+                res.render("new_link");
+            } else {
+                menu.links.push(createdLink);
+                menu.save();
+                req.flash("success", "Link added to the " + menu.name + " menu");
+                res.redirect("/dashboard");
+            }
+        });
         }
     });
 });
@@ -68,40 +133,31 @@ router.post("/dashboard/new_link", function(req, res) {
 router.put("/dashboard/:id", function(req, res){
     Link.findByIdAndUpdate(req.params.id, req.body.link, function(err, updatedLink){  //Find a link and update
       if(err){
-          console.error(err);
+          req.flash("error", "Something went wrong, try again");
           res.redirect("/dashboard");
       }  else {
+          req.flash("success", "Link updated successfully");
           res.redirect("/dashboard");
       }
     });
 });
+
 
 
 //UPDATE MENU ROUTE
 router.put("/dashboard/:id/edit_menu", function(req, res){  
     
-    Menu.findById(req.params.id, function(err, found){  //Find the menu
-        if(err) {
-            console.log(err);
-        } else {
     Menu.findByIdAndUpdate(req.params.id, req.body.title, function(err, updatedTitle){   //Update the menu
       if(err){
+          req.flash("error", "Something went wrong, try again");
           res.redirect("/dashboard");
       }  else {
-          Link.update({title: found.title}, req.body.title, {"multi": true}, function(err, updatedLinkTitle){   //Update the link so it follows the new menu name
-              if(err){
-                  res.redirect("/dashboard");
-                  console.log(err);
-              }  else {
+            req.flash("success", "The " + updatedTitle.name + " menu was updated to " + req.body.title.name);
                   res.redirect("/dashboard");
               }
           });
-      }
-    });
-        }
 });
-  
-    });
+
 
 
 
@@ -109,18 +165,20 @@ router.put("/dashboard/:id/edit_menu", function(req, res){
 router.delete("/dashboard/:id/deleteMenu", function(req, res){
     Menu.findById(req.params.id, function(err, found){    //Find the menu
         if(err) {
-            console.log(err);
-        } else {
-   
-    Menu.findByIdAndRemove(req.params.id, function(err){   //If found then delete the menu
-        if(err){ 
+            req.flash("error", "Something went wrong, try again");
             res.redirect("/dashboard");
         } else {
-            Link.deleteMany({title: found.title}, function(err){
+    Menu.findByIdAndRemove(req.params.id, function(err){   //If found then delete the menu
+        if(err){ 
+            req.flash("error", "Something went wrong, try again");
+            res.redirect("/dashboard");
+        } else {
+            Link.deleteMany({parentmenuid: req.params.id}, function(err){
               if(err){
+                  req.flash("error", "Something went wrong, try again");
                   res.redirect("/dashboard");
-                  console.log(err);
               }  else {
+                  req.flash("error", "The " + found.name + " menu was DELETED");
                   res.redirect("/dashboard");
               }
             });
@@ -133,12 +191,20 @@ router.delete("/dashboard/:id/deleteMenu", function(req, res){
 
 //DELETE LINK ROUTE
 router.delete("/dashboard/:id/deleteLink", function(req, res){
-    //DESTROY
-    Link.findByIdAndRemove(req.params.id, function(err){    //Find the link and delete
-        if(err){
+    Menu.findOneAndUpdate({"links": req.params.id },{$pull: {"links": req.params.id }}).exec(function(err, menu){
+        if(err) {
+            req.flash("error", "Something went wrong, try again");
             res.redirect("/dashboard");
         } else {
-            res.redirect("/dashboard");
+            Link.findByIdAndRemove(req.params.id, function(err, link){    //Find the link and delete
+                if(err){
+                    req.flash("error", "Something went wrong, try again");
+                    res.redirect("/dashboard");
+                } else {
+                    req.flash("error", "The " + link.name + " link was DELETED");
+                    res.redirect("/dashboard");
+                }
+            });
         }
     });
 });

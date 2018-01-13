@@ -1,53 +1,14 @@
-/*body {*/
-/*    margin-top: 50px;*/
-/*    background: #606060;*/
-/*}*/
+#loginForm {
+    margin-top: 20px;
+}
 
-/*span.icons {*/
-/*    margin-left: 20px;*/
-/*    padding: 0;*/
-/*}*/
-
-/*span.toDelete {*/
-/*    color: red;*/
-/*}*/
-
-
-/*.deleteForm {*/
-/*    margin: 20px;*/
-/*}*/
-
-/*.opened.item {*/
-/*    width: 300px;*/
-/*}*/
-
-/*.attention {*/
-/*    display: inline-block;*/
-/*}*/
-
-/*a.main_menu {*/
-/*    width: 100% !important;*/
-/*    display: block;*/
-/*}*/
-
-/*a.linkTrash {*/
-/*    color: rgba(182, 0, 0, 0.5);*/
-/*    font-size: 20px;*/
-/*}*/
-
-/*a.linkTrash:hover {*/
-/*    color: rgba(182, 0, 0, 1);*/
-/*}*/
-
-/*a.linkEdit  {*/
-/*    color: rgba(0, 205, 0, 0.5);*/
-/*    font-size: 20px;*/
-/*}*/
-
-/*a.linkEdit:hover  {*/
-/*    color: rgba(0, 205, 0, 1);*/
-/*}*/
-
+.login.success_alerts, .login.error_alerts{
+    position:absolute;
+  top: 123px;
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
 
 .ui.modal .actions>.button {
     margin-left: .75em;

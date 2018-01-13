@@ -1,0 +1,61 @@
+<% include ./partials/header %>
+
+    <body id="example" class="index pushable" ontouchstart="">
+
+        <!--PUSHER-->
+        <div class="pusher">
+
+            <!--FULL HEIGHT-->
+            <div class="full height">
+
+                <!--MAIN AREA CURRENTLY BLUE-->
+                <div class="masthead segment bg6">
+                    <% if(error && error.length > 0) { %>
+                        <div class="ui red message login error_alerts">
+                            <%= error %>
+                        </div>
+                        <% } %>
+
+                            <% if(success && success.length > 0) { %>
+                                <div class="ui floating green message login success_alerts">
+                                    <%= success %>
+                                </div>
+                                <% } %>
+                                    <div class="ui container">
+                                        <div class="introduction">
+                                            <h1 class="ui inverted header">
+                            <span class="library">
+                              MyCodeDashboard
+                            </span>
+                            <span class="tagline">
+                              Login or create an account
+                            </span>
+                          </h1>
+                                            <form id="loginForm" action="/login" method="POST">
+                                                <div class="ui form center aligned page grid">
+                                                    <div class="fields">
+                                                        <div class="field">
+                                                            <input type="text" name="username" placeholder="Username">
+                                                        </div>
+                                                        <div class="field">
+                                                            <input type="password" name="password" placeholder="Password">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ui hidden divider"></div>
+                                                <button class="ui huge inverted basic button view-ui">Login</button>
+                                                <a id="registerButton" href="#" class="ui huge inverted basic button view-ui">Register</a>
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                </div>
+                <!--END OF MAIN AREA-->
+            </div>
+        </div>
+        <!--END PUSHER-->
+
+        <% include ./partials/registerModal %>
+        
+        <% include ./partials/footer %>

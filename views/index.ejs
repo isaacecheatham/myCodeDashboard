@@ -1,144 +1,115 @@
-<!DOCTYPE html>
-<html>
+<% include ./partials/header %>
 
-<head>
+    <body id="example" class="index pushable" ontouchstart="">
 
-    <!-- Site Properities -->
-    <title>MyCodeDashboard</title>
+        <!--HIDDEN SIDEBAR-->
+        <div class="ui vertical inverted sidebar menu left" id="toc" style="">
 
-    <!-- Standard Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    
-    <!--<meta name="generator" content="DocPad v6.79.4">-->
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/docs.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+            <div class="item">
+                <a href="#"> <i class=""></i><b>< / > MyCodeDashboard</b></a>
+            </div>
 
-    <!-- <script type="text/javascript" src="https://cdn.transifex.com/9ede3015b9f84c1aabc81ab839c55d74/latest/manifest.jsonp"></script> -->
+            <div class="item">
+                <div class=" header">LINKS</div>
+                <div class="menu">
 
-</head>
+                    <div class="ui inverted segment">
+                        <div class="ui inverted accordion">
 
-<body id="example" class="index pushable" ontouchstart="">
+                            <% menus.forEach(function(menu){ %>
+                                <div class="title">
+                                    <i class="dropdown icon"></i>
+                                    <%= menu.name %>
+                                </div>
+                                <div class="content">
+                                    <% menu.links.forEach(function(link){%>
 
-<!--HIDDEN SIDEBAR-->
-    <div class="ui vertical inverted sidebar menu left" id="toc" style="">
-
-        <div class="item">
-            <a href="#"> <i class=""></i><b>< / > MyCodeDashboard</b></a>
-        </div>
-        <!--<a class="item" href="#">-->
-        <!--    <b>Big Link</b>-->
-        <!--</a>-->
-        
-        <div class="item">
-            <div class=" header">LINKS</div>
-            <div class="menu">
-
-                <div class="ui inverted segment">
-                    <div class="ui inverted accordion">
-
-                        <% titles.forEach(function(titles){ %>
-                            <div class="title">
-                                <i class="dropdown icon"></i>
-                                <%= titles.title %>
-                            </div>
-                            <div class="content">
-                                <% links.forEach(function(links){ %>
-                                    <% if( titles.title == links.title ) { %>
                                         <div class='opened item'>
-                                            <i class='right floated icon'><a class="linkEdit" href='/' id="<%= links._id %>"><i class='setting right floated icon'></i></a>
+                                            <i class='right floated icon'><a class="linkEdit" href='/' id="<%= link._id %>"><i class='setting right floated icon'></i></a>
                                             </i>
-                                            <!--<i class='right floated icon'><a class="linkTrash" href="/" id="<%= links._id %>"><i class='trash right floated icon'></i></a>-->
-                                            <!--</i>-->
-                                            <a class="link main_menu" target='_blank' href='<%= links.url %>'>
-                                                <%= links.name %>
+                                            <a class="link main_menu" target='_blank' href='<%= link.url %>'>
+                                                <%= link.name %>
                                             </a>
                                         </div>
 
-                                        <% }%>
-                                            <% }); %>
-                                                
-                                                <div class="main_menu opened item">
-                                                    <!--<div class="ui center aligned grid">-->
-                                                    <a class="newLinkDiv ui inverted green icon button menuButtons activating element" id="<%= titles._id %>" data-content="New Link"><i class='plus icon'></i></a>
-                                                    <a class="editMenuDiv ui inverted orange icon button menuButtons activating element" id="<%= titles._id %>" data-content="Edit Menu"><i class='settings icon'></i></a>
-                                                    <!--</div>-->
-                                                </div>
-                            </div>
-                            <% }); %>
-                    </div>
-                </div>
-                <a class="item newMenu" href="/">
-                    <i class='plus icon'></i> Add New Menu
-                </a>
-            </div>
-        </div>
-    </div> 
-<!--END OF HIDDEN SIDEBAR-->
+                                        <% }); %>
 
-<!--?????-->
-    <!--<div class="ui black big launch right attached fixed button">-->
-    <!--    <i class="content icon"></i>-->
-    <!--    <span class="text">Men</span>-->
-    <!--</div>-->
-<!--?????-->
-
-<!--MOBILE HEADER-->
-    <div class="ui fixed inverted main menu">
-        <div class="ui container">
-            <a class="launch icon item">
-                <i class="content icon"></i>
-            </a>
-            <div class="right menu">
-                 <div class="vertically fitted borderless item">
-                            <a class="item signInButton">
-                                <i class="user icon"></i> Log In
-                            </a>
-                 </div>
-            </div>
-        </div>
-    </div>
-<!--END MOBILE HEADER-->
-
-
-<!--PUSHER-->
-    <div class="pusher">
-        
-<!--FULL HEIGHT-->
-        <div class="full height">
-            
-<!--MAIN HEADER UNTIL MOBILE-->
-            <div class="following bar">
-                <div class="ui container">
-                    <div class="ui large inverted secondary network menu">
-                        <div class="item">
-                            <div class="ui logo shape">
-                                <div class="sides">
-                                    <div class="active ui side">
-                                        <!--<img class="ui image" src="/images/logo.png">-->
-                                    </div>
+                                            <div class="main_menu opened item">
+                                                <a class="newLinkDiv ui inverted green icon button menuButtons activating element" id="<%= menu._id %>" data-content="New Link"><i class='plus icon'></i></a>
+                                                <a class="editMenuDiv ui inverted orange icon button menuButtons activating element" id="<%= menu._id %>" data-content="Edit Menu"><i class='settings icon'></i></a>
+                                            </div>
                                 </div>
-                            </div>
+                                <% }); %>
                         </div>
-                        <a class="view-ui item">
-                            <i class="sidebar icon"></i> Menu
+                    </div>
+                    <a class="item newMenu" href="/">
+                        <i class='plus icon'></i> Add New Menu
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--END OF HIDDEN SIDEBAR-->
+
+        <!--MOBILE HEADER-->
+        <div class="ui fixed inverted main menu">
+            <div class="ui container">
+                <a class="launch icon item">
+                    <i class="content icon"></i>
+                </a>
+                <div class="right menu">
+                    <div class="vertically fitted borderless item">
+                        <a class="item signInButton">
+                            <i class="user icon"></i> Log In
                         </a>
-                        <div class="right menu">
-                            <a class="item signInButton">
-                                <i class="user icon"></i> Log In
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
-<!--END MAIN HEADER-->
+        </div>
+        <!--END MOBILE HEADER-->
 
-            
-<!--MAIN AREA CURRENTLY BLUE-->
+        <!--PUSHER-->
+        <div class="pusher">
+
+            <!--FULL HEIGHT-->
+            <div class="full height">
+
+                <!--MAIN HEADER UNTIL MOBILE-->
+                <div class="following bar">
+                    <div class="ui container">
+                        <div class="ui large inverted secondary network menu">
+                            <!--<div class="item">-->
+                            <!--    <div class="ui logo shape">-->
+                            <!--        <div class="sides">-->
+                            <!--            <div class="active ui side">-->
+                            <!--<img class="ui image" src="/images/logo.png">-->
+                            <!--            </div>-->
+                            <!--        </div>-->
+                            <!--    </div>-->
+                            <!--</div>-->
+                            <a class="view-ui item">
+                                <i class="sidebar icon"></i> Menu
+                            </a>
+                            <div class="right menu"></div>
+                            <a href="#" class="item">Signed In As: <%= currentUser.username %></a>
+                            <a href="/logout" class="item">Logout</a>
+                        </div>
+                        <% if(error && error.length > 0) { %>
+                            <div class="ui red message error_alerts">
+                                <%= error %>
+                            </div>
+                            <% } %>
+
+                                <% if(success && success.length > 0) { %>
+                                    <div class="ui green message success_alerts">
+                                        <%= success %>
+                                    </div>
+                                    <% } %>
+                    </div>
+                </div>
+            </div>
+            <!--END MAIN HEADER-->
+
+            <!--MAIN AREA CURRENTLY BLUE-->
             <div class="masthead segment bg6">
                 <div class="ui container">
                     <div class="introduction">
@@ -164,55 +135,12 @@
                     </div>
                 </div>
             </div>
-<!--END OF MAIN AREA-->
-   </div>        
-</div>
-<!--END PUSHER-->
+            <!--END OF MAIN AREA-->
+        </div>
+        </div>
+        <!--END PUSHER-->
 
-    <!--HIDDEN MODALS-->
-    <% include ./partials/indexModals %>
-    
-    
-    
-    <!--SCRIPTS-->
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-    <script src="/js/highlight.min.js"></script>
-    <script src="/js/easing.min.js"></script>
-    <script src="/js/docs.js"></script>
-    <script src="/js/home.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-    <script src="/js/modalJS.js"></script>
-    <script src="/js/app.js"></script>
-    
-    <script>
-        $('.ui.accordion')
-            .accordion();
-    </script>
+        <!--HIDDEN MODALS-->
+        <% include ./partials/indexModals %>
 
-
-    <script>
-        window.less = {
-            async: true,
-            environment: 'production',
-            fileAsync: false,
-            onReady: false,
-            useFileCache: true
-        };
-        
-        
-        $('.activating.element')
-          .popup({
-              position: "bottom right"
-          })
-        ;
-    </script>
-    
-    <script src="/js/less.min.js"></script>
-
-</body>
-
-</html>
+        <% include ./partials/footer %>

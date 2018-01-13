@@ -1,34 +1,3 @@
-<!--LOGIN FORM MODAL-->
-
-<div class="ui tiny modal" id="login_modal">
-    <i class="close icon"></i>
-    <div class="header">
-        Login
-    </div>
-    <div class="content">
-        <form class="ui form">
-            <div class="field">
-                <label>Username</label>
-                <input type="text" name="first-name" placeholder="Username">
-            </div>
-            <div class="field">
-                <label>Password</label>
-                <input type="text" name="last-name" placeholder="Password">
-            </div>
-            <div class="actions">
-                <div class="ui black deny button">
-                    Go Back
-                </div>
-                <button type="submit" class="ui positive right labeled icon button">
-                    Log me in!
-                    <i class="checkmark icon"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
-
 <!--DELETE FORM MODAL-->
 
 <div class="ui basic modal" id="delete_modal">
@@ -57,8 +26,8 @@
     <div class="content">
         <form class="ui form" action="/dashboard/new_menu" method="POST">
             <div class="field">
-                <label>Title</label>
-                <input type="text" name="menu[title]">
+                <label>Menu Name</label>
+                <input type="text" name="name">
             </div>
 
             <div class="actions">
@@ -80,36 +49,21 @@
 <div class="ui tiny modal" id="new_link_modal">
     <i class="close icon"></i>
     <div class="header">
-        Create a Link
+        <h2 id="linkParentMenu"></h2>
     </div>
     <div class="content">
-        <form class="ui form" action="/dashboard/new_link" method="POST">
-            <div class="field">
-                <label>Parent Title</label>
-
-                <select id="linkParentDropDown" name="link[title]">
-                    <option value="">Select Parent Menu</option>
-                    <% titles.forEach(function(titles){ %>
-                        <option value="<%= titles.title %>">
-                            <%= titles.title %>
-                        </option>
-                        <% }); %>
-                </select>
-            </div>
+        <form class="ui form" id="new_link_form" action="" method="POST">
+            
 
             <div class="field">
                 <label>Link Title</label>
-                <input type="text" name="link[name]">
+                <input type="text" name="linkname">
             </div>
 
             <div class="field">
                 <label>URL</label>
-                <input type="text" name="link[url]">
+                <input type="text" name="url">
                 
-<!--<div class="input-box">-->
-<!--  <input value="" autofocus="autofocus"/>-->
-<!--  <span class="unit">£</span>-->
-<!--</div>-->
             </div>
             </div>
             <div class="actions">
@@ -137,7 +91,7 @@
         <form id="edit_menu_form" class="ui form" action="" method="POST">
             <div class="field">
                 <label>Title</label>
-                <input type="text" id="editMenuInput" name="title[title]" value="">
+                <input type="text" id="editMenuInput" name="title[name]" value="">
             </div>
 
             <div class="actions">
@@ -167,17 +121,8 @@
     </div>
     <div class="content">
         <form id="edit_link_form" class="ui form" action="" method="POST">
-            <div class="field">
-                <label>Parent Title</label>
-                <select id="editLinkMenusDropDown" name="link[title]">
-                    <option value="">Select Parent Menu</option>
-                    <% titles.forEach(function(titles){ %>
-                        <option value="<%= titles.title %>">
-                            <%= titles.title %>
-                        </option>
-                        <% }); %>
-                </select>
-            </div>
+            
+            
 
             <div class="field">
                 <label>Link Title</label>
