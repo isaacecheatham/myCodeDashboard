@@ -30,6 +30,12 @@ router.get("/dashboard", middleware.isLoggedIn, function(req, res){
 
 router.post("/register", (req, res) => {
     
+    if(req.body.password != req.body.verifyPassword){
+        req.flash("error", "Passwords do not match, try again");
+        res.redirect('/login');
+    } else {
+    
+    req.body.username = req.body.username.toUpperCase();
     var newUser = User({username: req.body.username});
     
     User.register(newUser, req.body.password, (err, user) => {
@@ -43,6 +49,7 @@ router.post("/register", (req, res) => {
             res.redirect("/dashboard");
         });
     });
+    }
 });
 
 //LOGIN ROUTES
@@ -50,13 +57,17 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
-router.post("/login", passport.authenticate("local", {
+router.post("/login", usernameToUpperCase, passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true
 }) ,(req, res) => {
     
 });
+function usernameToUpperCase(req, res, next){
+    req.body.username = req.body.username.toUpperCase();
+    next();
+}
 
 
 //LOGOUT ROUTE

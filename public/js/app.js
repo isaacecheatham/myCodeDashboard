@@ -20,3 +20,4 @@ $('.ui.accordion')
 setTimeout(function(){$('.success_alerts').fadeOut();}, 5000);
         
 $(window).click(function(){$('.error_alerts').fadeOut();});
+
