@@ -15,7 +15,7 @@ const   bodyParser      =   require("body-parser"),
 mongoose.Promise = global.Promise;
 
 //Mongo DB Connection
-mongoose.connect("mongodb://localhost/dashboard_app_test", {
+mongoose.connect("mongodb://localhost/dashboard_app_v1", {
   useMongoClient: true,
 });
 
