@@ -14,10 +14,21 @@ const   bodyParser      =   require("body-parser"),
 //Correct promise error
 mongoose.Promise = global.Promise;
 
+
+
 //Mongo DB Connection
-mongoose.connect("mongodb://localhost/dashboard_app_v1", {
-  useMongoClient: true,
-});
+
+mongoose.connect(process.env.DATABASEURL);
+
+// mongoose.connect("mongodb://localhost/dashboard_app_v1", {
+//   useMongoClient: true,
+// });
+
+// mongoose.connect("mongodb://isaac:042911@ds255797.mlab.com:55797/mycodedashboardv1", {
+//   useMongoClient: true,
+// });
+
+
 
 //Set view engine to read .ejs files
 app.set("view engine", "ejs");
