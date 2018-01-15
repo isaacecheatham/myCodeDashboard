@@ -18,7 +18,7 @@ mongoose.Promise = global.Promise;
 
 //Mongo DB Connection
 
-ongoose.connect(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL);
 
 // mongoose.connect("mongodb://localhost/dashboard_app_v1", {
 //   useMongoClient: true,
