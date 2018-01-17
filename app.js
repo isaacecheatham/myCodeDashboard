@@ -17,7 +17,7 @@ mongoose.Promise = global.Promise;
 
 //Mongo DB Connection
 
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL, { useMongoClient: true });
 
 
 //Set view engine to read .ejs files

@@ -14,7 +14,7 @@ router.get("/", function(req, res){
 
 
 //INDEX ROUTE
-router.get("/dashboard", middleware.isLoggedIn, function(req, res){
+router.get("/dashboard", middleware.isLoggedInDashboardView, function(req, res){
     Menu.find({"owner.id":req.user._id}).sort('name').populate("links").exec(function(err, menunames){ //Find all menus to display
         if(err){
             req.flash("error", "Something went wrong");
@@ -54,7 +54,11 @@ router.post("/register", (req, res) => {
 
 //LOGIN ROUTES
 router.get("/login", (req, res) => {
-    res.render("login");
+    if(req.isAuthenticated()) {
+        res.redirect("/dashboard");
+    } else {
+        res.render("login");
+    }
 });
 
 router.post("/login", usernameToUpperCase, passport.authenticate("local", {
