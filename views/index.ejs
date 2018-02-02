@@ -1,144 +1,44 @@
 <% include ./partials/header %>
 
-    <body id="example" class="index pushable" ontouchstart="">
+<body id="mainSection" class="index pushable" ontouchstart="">
 
-        <!--HIDDEN SIDEBAR-->
-        <div class="ui vertical inverted sidebar menu left" id="toc" style="">
+    <!--PUSHER-->
+    <div class="pusher">
+        
+        <% include ./partials/sideMenu %>
+        <% include ./partials/mobileHeader %>
+        <% include ./partials/fullHeader %>
 
-            <div class="item">
-                <a href="#"> <i class=""></i><b>< / > MyCodeDashboard</b></a>
-            </div>
+        <!--MAIN AREA CURRENTLY BLUE-->
+        <div class="article">
 
-            <div class="item">
-                <div class=" header">LINKS</div>
-                <div class="menu">
+            <div class="ui three column centered stackable grid">
+                <div class="left four wide column">
+                    <% include ./widgets/description %>
+                </div>
 
-                    <div class="ui inverted segment">
-                        <div class="ui inverted accordion">
+                <div id="newsColumn" class="eight wide column">
+                    <% include ./widgets/news %>
+                </div>
 
-                            <% menus.forEach(function(menu){ %>
-                                <div class="title">
-                                    <i class="dropdown icon"></i>
-                                    <%= menu.name %>
-                                </div>
-                                <div class="content">
-                                    <% menu.links.forEach(function(link){%>
-
-                                        <div class='opened item'>
-                                            <i class='right floated icon'><a class="linkEdit" href='/' id="<%= link._id %>"><i class='setting right floated icon'></i></a>
-                                            </i>
-                                            <a class="link main_menu" target='_blank' href='<%= link.url %>'>
-                                                <%= link.name %>
-                                            </a>
-                                        </div>
-
-                                        <% }); %>
-
-                                            <div class="main_menu opened item">
-                                                <a class="newLinkDiv ui inverted green icon button menuButtons activating element" id="<%= menu._id %>" data-content="New Link"><i class='plus icon'></i></a>
-                                                <a class="editMenuDiv ui inverted orange icon button menuButtons activating element" id="<%= menu._id %>" data-content="Edit Menu"><i class='settings icon'></i></a>
-                                            </div>
-                                </div>
-                                <% }); %>
-                        </div>
-                    </div>
-                    <a class="item newMenu" href="/">
-                        <i class='plus icon'></i> Add New Menu
-                    </a>
+                <div class="right four wide computer ten wide tablet six wide mobile column">
+                    <% include ./widgets/weather %>
                 </div>
             </div>
         </div>
-        <!--END OF HIDDEN SIDEBAR-->
 
-        <!--MOBILE HEADER-->
-        <div class="ui fixed inverted main menu">
-            <div class="ui container">
-                <a class="launch icon item">
-                    <i class="content icon"></i>
-                </a>
-                <div class="right menu">
-                    <div id="mobileLogout" class="vertically fitted borderless item">
-                       <a href="/logout" class="item">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--END MOBILE HEADER-->
+        <!--END OF MAIN AREA-->
 
-        <!--PUSHER-->
-        <div class="pusher">
+    </div>
+    <!--END PUSHER-->
 
-            <!--FULL HEIGHT-->
-            <div class="full height">
+    <!--HIDDEN MODALS-->
+    <% include ./partials/indexModals %>
 
-                <!--MAIN HEADER UNTIL MOBILE-->
-                <div class="following bar">
-                    <div class="ui container">
-                        <div class="ui large inverted secondary network menu">
-                            <!--<div class="item">-->
-                            <!--    <div class="ui logo shape">-->
-                            <!--        <div class="sides">-->
-                            <!--            <div class="active ui side">-->
-                            <!--<img class="ui image" src="/images/logo.png">-->
-                            <!--            </div>-->
-                            <!--        </div>-->
-                            <!--    </div>-->
-                            <!--</div>-->
-                            <a class="view-ui item">
-                                <i class="sidebar icon"></i> Menu
-                            </a>
-                            <div class="right menu"></div>
-                            <a href="#" class="item">Signed In As: <%= currentUser.username %></a>
-                            <a href="/logout" class="item">Logout</a>
-                        </div>
-                        <% if(error && error.length > 0) { %>
-                            <div class="ui red message error_alerts">
-                                <%= error %>
-                            </div>
-                            <% } %>
-
-                                <% if(success && success.length > 0) { %>
-                                    <div class="ui green message success_alerts">
-                                        <%= success %>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-            <!--END MAIN HEADER-->
-
-            <!--MAIN AREA CURRENTLY BLUE-->
-            <div class="masthead segment bg6">
-                <div class="ui container">
-                    <div class="introduction">
-                        <h1 class="ui inverted header">
-                            <span class="centerTitle library">
-                              MyCodeDashboard
-                            </span>
-                            <p class="tagline"><span>
-                              More Content Coming Soon...
-                            </span></p>
-                          </h1>
-                        <div class="ui hidden divider"></div>
-
-                        <a href="#l" class="ui huge inverted download button view-ui">
-                            Try it!
-                        </a>
-                        <a href="#" class="ui huge inverted basic button view-ui">
-                            Add a link!
-                        </a>
-                    </div>
-                    <div class="inverted advertisement">
-
-                    </div>
-                </div>
-            </div>
-            <!--END OF MAIN AREA-->
-        </div>
-        </div>
-        <!--END PUSHER-->
-
-        <!--HIDDEN MODALS-->
-        <% include ./partials/indexModals %>
-
-        <% include ./partials/footer %>
+    <% include ./partials/footer %>
+    
+    <script>
+        $( document ).ready(function() {
+                getTechNews('crypto-coins-news');
+            });
+    </script>

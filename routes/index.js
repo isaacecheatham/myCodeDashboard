@@ -5,6 +5,7 @@ var User = require("../models/user")
 var middleware = require("../middleware");
 var Link    = require('../models/link');
 var Menu    = require('../models/menu');
+var request = require("request");
 
 
 //ROOT ROUTE
@@ -19,7 +20,7 @@ router.get("/dashboard", middleware.isLoggedInDashboardView, function(req, res){
         if(err){
             req.flash("error", "Something went wrong");
         } else {
-          res.render("index", {menus: menunames});
+          res.render("index", {menus: menunames, email: process.env.CONTACTEMAIL });
         }
     });
 });
@@ -222,6 +223,22 @@ router.delete("/dashboard/:id/deleteLink", function(req, res){
             });
         }
     });
+});
+
+
+router.post("/newsResults", function(req, res){
+    
+    var source = (req.body.source);
+    // res.render("search", {data: query});
+    var url = "https://newsapi.org/v2/top-headlines?sources=" + source + "&apiKey=6d77162f40324872997efcf768c3a2ed";
+     request(url, function(error, response, body){
+         if(!error && response.statusCode == 200) {
+             var data = JSON.parse(body);
+            //  console.log(data);
+            //  res.render("search", {data: data});
+            res.send(data);
+         }
+     });
 });
 
 

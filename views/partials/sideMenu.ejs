@@ -1,0 +1,44 @@
+<div class="ui vertical inverted sidebar menu left" id="toc" style="">
+
+    <div class="item">
+        <a href="#"> <i class=""></i><b>< / > MyCodeDashboard</b></a>
+    </div>
+
+    <div class="item">
+        <!--<div class=" header">LINKS</div>-->
+        <div class="menu">
+                <div class="ui inverted segment">
+                    <div class="ui inverted accordion">
+    
+                        <% menus.forEach(function(menu){ %>
+                            <div class="title">
+                                <!--<i class="dropdown icon"></i>-->
+                                <%= menu.name %>
+                            </div>
+                            <div class="content">
+                                <% menu.links.forEach(function(link){%>
+    
+                                    <div class='opened item'>
+                                        <i class='right floated icon'><a class="linkEdit" href='/' id="<%= link._id %>"><i class='setting right floated icon'></i></a>
+                                        </i>
+                                        <a class="link main_menu" target='_blank' href='<%= link.url %>'>
+                                            <%= link.name %>
+                                        </a>
+                                    </div>
+    
+                                <% }); %>
+    
+                                <div class="main_menu opened item">
+                                    <a class="newLinkDiv ui inverted green icon button menuButtons activating element" id="<%= menu._id %>" data-content="New Link"><i class='plus icon'></i></a>
+                                    <a class="editMenuDiv ui inverted orange icon button menuButtons activating element" id="<%= menu._id %>" data-content="Edit Menu"><i class='settings icon'></i></a>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            <a class="item newMenu" href="/">
+                <i class='plus icon'></i> New Menu
+            </a>
+        </div>
+    </div>
+</div>

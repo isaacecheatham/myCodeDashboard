@@ -1,0 +1,34 @@
+<div class="following bar light fixed">
+    <div class="ui container">
+        <div class="ui large secondary network menu">
+
+            <a class="view-ui item">
+                <i class="sidebar icon"></i> Links
+            </a>
+
+            <% if(error && error.length > 0) { %>
+                <div class="item red message error_alerts">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <% if(success && success.length > 0) { %>
+                <div class="item green message success_alerts">
+                    <%= success %>
+                </div>
+            <% } %>
+                                    
+            <div class="right menu"></div>
+            <div class="ui dropdown item profileMenu">
+                <i class="fas fa-user-circle fa-lg"></i>
+                <%= currentUser.username %> <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="#">Profile</a>
+                        <a class="item" href="#">Other</a>
+                        <a class="item logout" href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>

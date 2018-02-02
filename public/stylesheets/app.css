@@ -1,28 +1,241 @@
-#loginForm {
-    margin-top: 20px;
+/*****************PAGE STYLES*******************/
+
+.article{
+    min-height: 100vh;
+    padding: 70px 20px 0 20px;
 }
+
+.pusher {
+    background: #e2e1e0 !important;
+}
+
+/*//////////////////////////////////////////////*/
+
+
+/*****************ALERT POPUPS*******************/
+
+.red.message {
+    background-color: #ffe8e6 !important;
+    color: #db2828 !important;
+    box-shadow: 0 0 0 1px #db2828 inset,0 0 0 0 transparent !important;
+}
+
+.green.message {
+    background-color: #e5f9e7 !important;
+    color: #1ebc30 !important;
+    box-shadow: 0 0 0 1px #1ebc30 inset,0 0 0 0 transparent !important;
+}
+
+/*//////////////////////////////////////////////*/
+
+
+/*****************HEADER AND SIDE MENU STYLES*******************/
 
 #mobileLogout {
     padding-right: 0;
 }
 
+.ui.inverted.menu, .ui.inverted.segment {
+    background-color: #313e45;
+}
+
+.profileMenu, #mainSection.index .light.following.bar .network.menu .view-ui {
+    color: #313e45;
+}
+
+.profileMenu {
+    min-width: 15%;
+}
+
+.ui.menu .ui.dropdown .menu > .item.logout {
+    color: #f26202 !important;
+}
+
+.ui.accordion .title:not(.ui) {
+     font-size: 1.4em;   
+}
+
+.ui.vertical.menu .menu .item {
+    font-size: 1em;
+}
+
+.ui.button.menuButtons {
+    width: 47%;
+    padding: .25em 0;
+}
+
+.ui.vertical.inverted.menu .item .menu .link.main_menu:hover, .ui.vertical.inverted.menu .item .menu a.link:hover
+{
+    background: 0 0;
+    color: #fff;
+}
+
+/*//////////////////////////////////////////////*/
+
+
+/*****************WIDGET CONTAINER*******************/
+
+.widget-container {
+    width: 100%;
+    min-height: 145px;
+    display: block;
+    background-color: #313e45;
+    border-radius: 10px;
+    margin: 0 auto;
+    color: #fff;
+  
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.inner-widget-wrapper {
+    padding: 20px;
+    color: white !important;
+}
+
+/*//////////////////////////////////////////////*/
+
+
+/*****************TECH NEWS WIDGET*******************/
+
+.newsImg {
+    width: 100% !important;
+    max-height: 180px;
+    overflow: hidden;
+}
+
+#readNews {
+    margin: 20px 0 10px 0;
+    text-align: center;
+    width: 80%;
+}
+
+.ui.cards {
+    margin: 0 0 0 -2px;
+    flex: 1;
+    flex-wrap: nowrap;
+}
+
+.card{
+    display: flex;
+}
+
+.slick-slide {
+    height: auto;
+}
+
+.slick-nav {
+    text-align: center;
+}
+
+/*fix left new button margin*/
+.news:first-child {
+    margin-left: 3px;
+}
+
+/*fix news button padding issue on small screens*/
+@media (min-width:1048px) {
+.ui.news.button {
+        padding-left: .5em;
+        padding-right: .5em;
+    }
+}
+
+/*//////////////////////////////////////////////*/
+
+
+/*****************WEATHER WIDGET*******************/
+
+.top-left {
+  height: 60%;
+  width: 50%;
+  padding: 10px 0 0 10px;
+  display: inline-block;
+}
+
+.top-right {
+  height: 60%;
+  width: 50%;
+  float: right;
+  
+  padding: 30px 0 0 0;
+}
+
+#city {
+  font-weight: 400;
+  font-size: 1.7em;
+}
+
+.fa-map-marker {
+    margin-right: 8px;
+}
+
+.top-left > img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 15px auto;
+}
+
+#temperature,
+#temp-divider,
+#fahrenheit {
+  display: inline;
+  vertical-align: middle;
+}
+
+#temperature {
+  font-size: 2em;
+  font-weight: 400;
+  margin-right: -3px;
+}
+
+#fahrenheit {
+    font-size: 2em;
+    margin-right: 5px;
+    font-weight: 400;
+}
+
+#tempDisplay {
+    margin-left: 30px;
+}
+
+.fa-thermometer-full {
+    margin-right: 8px;
+}
+
+@media (max-width:1122px) and (min-width:992px) {
+    #temperature {
+      font-size: 1.5em;
+    }
+    
+    #fahrenheit {
+        font-size: 1.5em;
+    }
+    
+    #city {
+      font-size: 1.5em;
+    }
+    
+    .top-left > img {
+      width: 80px;
+      height: 80px;
+    }
+}
+
+/*//////////////////////////////////////////////*/
+
+
+/*****************LOGIN SCREEN*******************/
+
+#loginForm {
+    margin-top: 20px;
+}
 
 @media only screen and (max-width: 425px){
 .loginField {
     width: 100%;
 }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .login.success_alerts, .login.error_alerts{
     position:absolute;
@@ -32,29 +245,25 @@
     transform: translate(-50%, 0);
 }
 
+@media only screen and (max-width: 767px){
+    
+.centerTitle{
+    font-size: 1.5em !important;
+}   
+    
+/*//////////////////////////////////////////////*/    
+    
+
+/*****************MODAL STYLES*******************/
+    
 .ui.modal .actions>.button {
     margin-left: .75em;
     margin-right: .75em;
     margin-top: .75em;
 }
-
-
-@media only screen and (max-width: 767px){
-    
-.library{
-    font-size: 1.5em !important;
-}   
-    
-    
-    
-    
-    
-    
-    
     
 .ui.modal>.header {
     padding: .75rem 1rem!important;
-    /* padding-right: 2.25rem!important; */
 }
 }
 
@@ -62,31 +271,67 @@
     color: orange;
 }
 
-.ui.vertical.inverted.menu .item .menu .link.main_menu:hover, .ui.vertical.inverted.menu .item .menu a.link:hover
-{
-    background: 0 0;
-    color: #fff;
-}
+/*//////////////////////////////////////////////*/  
 
 
-.ui.vertical.inverted.menu .item .menu .trash:hover {
-    color: #ff695e;
-}
+/*.slick-nav.hidden {*/
+/*    display: none;*/
+/*}*/
 
-.ui.vertical.inverted.menu .item .menu .edit:hover {
-    color: gold;
-}
+/*#context {*/
+/*    height: 100%;*/
+/*}*/
 
-.ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
-    margin: 0;
-}
+/*#newsColumn {*/
+/*    background-color: #fff;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);*/
+/*}*/
 
-.ui.button.menuButtons {
-    width: 47%;
-    padding: .25em 0;
-}
+/*.column {*/
+    /*padding-top: 0 !important;*/
+    /*padding-bottom: 0 !important;*/
+/*}*/
 
 
-.ui.form .inline.field > input, .ui.form .inline.field > select, .ui.form .inline.fields .field > input, .ui.form .inline.fields .field > select {
-    width: 75%;
-}
+/*#readNews .slick-list {*/
+    /*padding-left: 5px;*/
+    /*margin-right: 5px;*/
+    /*margin-left: 2px;*/
+/*}*/
+
+/*.slick-prev::before, .slick-next::before {*/
+    /*color: grey;*/
+/*}*/
+
+/*#mainGrid {*/
+/*    height: 100vh;*/
+/*    padding-top: 100px;*/
+/*}*/
+
+
+/*.articleHeader {*/
+/*    font-size: 1.5em;*/
+/*}*/
+
+/*.articleDescription {*/
+/*    font-size: 1em;*/
+/*}*/
+
+/*.ui.vertical.inverted.menu .item .menu .trash:hover {*/
+/*    color: #ff695e;*/
+/*}*/
+
+/*.ui.vertical.inverted.menu .item .menu .edit:hover {*/
+/*    color: gold;*/
+/*}*/
+
+/*.ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {*/
+/*    margin: 0;*/
+/*}*/
+
+
+/*.ui.form .inline.field > input, .ui.form .inline.field > select, .ui.form .inline.fields .field > input, .ui.form .inline.fields .field > select {*/
+/*    width: 75%;*/
+/*    border: 3px solid red;*/
+/*}*/

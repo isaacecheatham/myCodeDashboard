@@ -1,0 +1,20 @@
+<div class="ui fixed inverted main menu">
+    <div class="ui container">
+        <a class="launch icon item">
+                    <i class="content icon"></i>
+                </a>
+        <div class="right menu">
+            <div id="mobileLogout" class="vertically fitted borderless item">
+                <div class="ui dropdown item profileMenu">
+                    <i class="fas fa-user-circle fa-lg"></i>
+                    <%= currentUser.username %> <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="#">Profile</a>
+                        <a class="item" href="#">Other</a>
+                        <a class="item logout" href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -227,9 +227,9 @@ semantic.home.ready = function() {
         onTopPassedReverse: function() {
           requestAnimationFrame(function() {
             $('.following.bar')
-              .removeClass('light fixed')
+              .removeClass('')
               .find('.menu')
-                .addClass('inverted')
+                .addClass('')
                 .find('.additional.item')
                   .transition('hide')
             ;
