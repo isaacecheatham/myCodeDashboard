@@ -234,7 +234,7 @@ $(document).ready(function() {
       $.getJSON("https://api.openweathermap.org/data/2.5/weather?id=4299276&appid=bf1f1e70fce9ab83d909874019fac2e3", function(json) {
         $('#city').html('<i class="fa fa-map-marker" aria-hidden="true"></i>' + json.name);
         $('#weather-status').html(json.weather[0].main + " / " + json.weather[0].description);
-        console.log(json.weather[0].main);
+        // console.log(json.weather[0].main);
         
         // https://openweathermap.org/weather-conditions
         
