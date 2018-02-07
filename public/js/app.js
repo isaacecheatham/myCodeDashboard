@@ -160,25 +160,35 @@ $('#headlines').slick({
           infinite: true,
           speed: 300,
           rows: 0,
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 5,
+          slidesToScroll: 5,
           prevArrow: $(".prev-slide"),
           nextArrow: $(".next-slide"),
           responsive: [
+            {
+              breakpoint: 2380,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 1900,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+              }
+            },
             {
               breakpoint: 1530,
               settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
                 infinite: true,
-                dots: true
-              }
-            },
-            {
-              breakpoint: 1050,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
                 dots: true
               }
             },
