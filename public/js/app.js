@@ -234,40 +234,45 @@ $(document).ready(function() {
       $.getJSON("https://api.openweathermap.org/data/2.5/weather?id=4299276&appid=bf1f1e70fce9ab83d909874019fac2e3", function(json) {
         $('#city').html('<i class="fa fa-map-marker" aria-hidden="true"></i>' + json.name);
         $('#weather-status').html(json.weather[0].main + " / " + json.weather[0].description);
-
+        console.log(json.weather[0].main);
+        
+        // https://openweathermap.org/weather-conditions
         
         //WEATHER CONDITIONS FOUND HERE: http://openweathermap.org/weather-conditions
         switch (json.weather[0].main) {
           case "Clouds":
-            $('.top-left').html('<img class="weather-icon" src="/images/cloudy.png">');
+            $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/cloudy.png">');
             break;
           case "Clear":
             if(isDayTime){
-              $('.top-left').html('<img class="weather-icon" src="/images/sunny.png">');
+              $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/sunny.png">');
             } else {
-              $('.top-left').html('<img class="weather-icon" src="/images/moon.png">');
+              $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/moon.png">');
             }
             break;
           case "Thunderstorm":
-            $('.top-left').html('<img class="weather-icon" src="/images/thunderstorm.png">');
+            $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/thunderstorm.png">');
             break;
           case "Drizzle":
-            $('.top-left').html('<img class="weather-icon" src="/images/drizzle.png">');
+            $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/drizzle.png">');
+            break;
+          case "Mist":
+            $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/drizzle.png">');
             break;
           case "Rain":
-            $('.top-left').html('<img class="weather-icon" src="/images/rain.png">');
+            $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/rain.png">');
             break;
           case "Snow":
-            $('.top-left').html('<img class="weather-icon" src="/images/snow.png">');
+            $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/snow.png">');
             break;
           case "Extreme":
-            $('.top-left').html('<img class="weather-icon" src="/images/warning.png">');
+            $('.top-left').html('<img class="weather-icon" title="' + json.weather[0].main + '" src="/images/warning.png">');
             break;
         }
 
         var temp = (json.main.temp -273);
         $('#temperature').html('<i class="fa fa-thermometer-full" aria-hidden="true"></i>' + Math.round(temp * 1.8 + 32) + '&deg F');
-
+    
       });
 
     });
